@@ -1,4 +1,2 @@
 some text file
-
-
 added some more text
