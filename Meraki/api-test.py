@@ -8,10 +8,11 @@ def main():
     headers = {
         "Content": "application/json",
         "X-Cisco-Meraki-API-Key": "44774a7665649869244716410fe7975e99d2c072",
-        'Cookie': '_session_id = 3a41efc5c14b45ef0009a6882481ee50'
     }
+    requests.packages.urllib3.disable_warnings()
 
-    get_org = requests.request('GET', url= f'{api_path}/organizations', headers=headers)
+    sess = requests.session()
+    get_org = sess.get(f'{api_path}/organizations', data=headers, verify=False)
     get_org = get_org.text.encode('UTF-8')
     #  print(json.loads(str(get_org)))
     print(get_org)
